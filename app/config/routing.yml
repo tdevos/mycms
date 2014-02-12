@@ -15,7 +15,7 @@ static:
     defaults:
         _controller: AcmeMainBundle:Demo:static
     requirements:
-        _locale: en|de
+        _locale: fr|nl
 
 cmf_create_rest:
     resource: "@CmfCreateBundle/Resources/config/routing/rest.xml"

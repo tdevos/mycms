@@ -32,6 +32,9 @@ class AppKernel extends Kernel
             new Symfony\Cmf\Bundle\MediaBundle\CmfMediaBundle(),
             new Symfony\Cmf\Bundle\CreateBundle\CmfCreateBundle(),
 
+            new Symfony\Cmf\Bundle\BlockBundle\CmfBlockBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+
             // and the sandbox bundle
             new Acme\MainBundle\AcmeMainBundle(),
         );

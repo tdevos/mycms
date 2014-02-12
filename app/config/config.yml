@@ -3,7 +3,7 @@ imports:
 
 framework:
     #esi:             ~
-    translator:      { fallback: en }
+    translator:      { fallback: fr }
     secret:          %secret%
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     form:            true
@@ -57,10 +57,10 @@ doctrine_phpcr:
         auto_mapping: true
         auto_generate_proxy_classes: %kernel.debug%
         locales:
-            en:
-                - de
-            de:
-                - en
+            fr:
+                - nl
+            nl:
+                - fr
 
 liip_doctrine_cache:
     namespaces:
@@ -99,3 +99,6 @@ lunetics_locale:
         - router
         - browser
     allowed_locales: %locales%
+
+sonata_block:
+    default_contexts: [cms]

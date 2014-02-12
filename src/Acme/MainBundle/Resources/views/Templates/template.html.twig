@@ -1,0 +1,20 @@
+{% extends "AcmeMainBundle::layout.html.twig" %}
+
+{% block content %}
+
+    {% createphp cmfMainContent as="rdf" %}
+    {{ rdf|raw }}
+    {% endcreatephp %}
+
+    {{ sonata_block_render({ 'name': 'firstBlock' }, {
+    'template': 'AcmeMainBundle:Blocks:block.html.twig'
+    })}}
+
+    {#{{ sonata_block_render({ 'name': 'additionalInfoBlock' }, {#}
+    {#'divisible_by': 3,#}
+    {#'divisible_class': 'row',#}
+    {#'child_class': 'col-md-4'#}
+    {#}) }}#}
+
+{% endblock %}
+
