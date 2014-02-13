@@ -6,7 +6,8 @@ static:
         template: "AcmeMainBundle:Templates:template.html.twig"
         blocks:
             firstBlock:
-                class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock
+#                class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock
+                class: Acme\MainBundle\Block\ProductBlock
                 properties:
                     title: "First title"
                     body: "first body"

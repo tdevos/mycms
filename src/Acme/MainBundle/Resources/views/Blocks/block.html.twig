@@ -2,7 +2,6 @@
 
 {% block block %}
     {% createphp block as="rdf" %}
-    <h1>{{ block.title|raw }}</h1>
-    <p>{{ block.body|raw }}</p>
+    {{ rdf|raw }}
     {% endcreatephp %}
 {% endblock %}
