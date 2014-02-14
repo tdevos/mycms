@@ -2,9 +2,13 @@
         xmlns:schema="http://schema.org/"
         typeof="schema:WebPageElement"
         >
-    <attribute key="class" value="articleContainer"/>
+    <attribute key="class" value="col-lg-4"/>
     <children>
-        <property property="schema:headline" identifier="title" tag-name="h2"/>
-        <property property="schema:text" identifier="body" />
+        <property property="schema:headline" identifier="title" tag-name="h2">
+            <attribute key="class" value="col-lg-12"/>
+        </property>
+        <property property="schema:text" identifier="body" >
+            <attribute key="class" value="col-lg-12"/>
+        </property>
     </children>
 </type>

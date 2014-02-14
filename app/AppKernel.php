@@ -37,6 +37,8 @@ class AppKernel extends Kernel
 
             // and the sandbox bundle
             new Acme\MainBundle\AcmeMainBundle(),
+
+            new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

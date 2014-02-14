@@ -30,7 +30,10 @@
         "liip/doctrine-cache-bundle": "1.0.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "liip/imagine-bundle": "~0.12",
-        "wjzijderveld/check-bundles": "1.0.*@dev"
+        "wjzijderveld/check-bundles": "1.0.*@dev",
+        "braincrafted/bootstrap-bundle": "~2.0",
+        "twbs/bootstrap": "3.0.*",
+        "jquery/jquery":  "1.10.*"
     },
     "require-dev": {
         "liip/functional-test-bundle": "1.0.*"
@@ -71,5 +74,18 @@
         "branch-alias": {
             "dev-master": "1.0-dev"
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "1.10.2",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-1.10.2.js",
+                    "type": "file"
+                }
+            }
+        }
+    ]
 }
