@@ -39,6 +39,12 @@ class Load extends AbstractLoadPageData
 
         $session = $dm->getPhpcrSession();
 
+        $basepath = $this->container->getParameter('cmf_media.persistence.phpcr.media_basepath');
+        NodeHelper::createPath($session, $basepath);
+
+        $basepath = $this->container->getParameter('cmf_content.persistence.phpcr.content_basepath');
+        NodeHelper::createPath($session, $basepath);
+
         $basepath = $this->getBasePath();
         NodeHelper::createPath($session, preg_replace('#/[^/]*$#', '', $basepath));
 

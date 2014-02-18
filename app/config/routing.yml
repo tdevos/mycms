@@ -22,3 +22,13 @@ cmf_create_rest:
 
 cmf_create_image:
     resource: "@CmfCreateBundle/Resources/config/routing/image.xml"
+
+block_cache:
+    resource: "@CmfBlockBundle/Resources/config/routing/cache.xml"
+    prefix: /
+
+cmf_media_file:
+    resource: "@CmfMediaBundle/Resources/config/routing/file.xml"
+
+cmf_media_image:
+    resource: "@CmfMediaBundle/Resources/config/routing/image.xml"
