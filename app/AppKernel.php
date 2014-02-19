@@ -39,6 +39,11 @@ class AppKernel extends Kernel
             new Acme\MainBundle\AcmeMainBundle(),
 
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
+
+            new FOS\UserBundle\FOSUserBundle(),
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            new Cms\UserBundle\CmsUserBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

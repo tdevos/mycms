@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: security.yml }
 
 framework:
     #esi:             ~
@@ -48,6 +49,9 @@ doctrine:
         password: %database_password%
         path:     %database_path%
         charset:  UTF8
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
 
 # cmf configuration
 doctrine_phpcr:
@@ -122,3 +126,8 @@ braincrafted_bootstrap:
         variables_file: %kernel.root_dir%/Resources/less/variables.less
         bootstrap_output: %kernel.root_dir%/Resources/less/bootstrap.less
         bootstrap_template: BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Cms\UserBundle\Entity\User
