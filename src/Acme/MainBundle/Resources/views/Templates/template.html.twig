@@ -2,11 +2,22 @@
 
 {% block content %}
 
-    {% createphp cmfMainContent as="rdf" %}
-    {{ rdf|raw }}
-    {% endcreatephp %}
+    <div class="jumbotron">
+        {% createphp cmfMainContent as="rdf" %}
+        {{ rdf.title|raw }}
+        {{ rdf.body|raw }}
+        {% endcreatephp %}
+    </div>
 
     {{ sonata_block_render({ 'name': 'firstBlock' }, {
+    'template': 'AcmeMainBundle:Blocks:block.html.twig'
+    })}}
+
+    {{ sonata_block_render({ 'name': 'secondBlock' }, {
+    'template': 'AcmeMainBundle:Blocks:block.html.twig'
+    })}}
+
+    {{ sonata_block_render({ 'name': 'thirdBlock' }, {
     'template': 'AcmeMainBundle:Blocks:block.html.twig'
     })}}
 

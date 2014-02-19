@@ -11,6 +11,17 @@ static:
                 properties:
                     title: "First title"
                     body: "first body"
+            secondBlock:
+                class: Acme\MainBundle\Block\ProductBlock
+                properties:
+                    title: "First title"
+                    body: "first body"
+            thirdBlock:
+                class: Acme\MainBundle\Block\ProductBlock
+                properties:
+                    title: "First title"
+                    body: "first body"
+
 #            additionalInfoBlock:
 #                class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
 #                children:
