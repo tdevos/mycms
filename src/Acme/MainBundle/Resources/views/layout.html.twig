@@ -41,6 +41,7 @@
     {% endblock %}
 </div>
 
+{% render controller("CmsUserBundle:Menu:show") %}
 {% render controller("cmf_create.jsloader.controller:includeJSFilesAction", {'_locale': app.request.locale}) %}
 
 </body>

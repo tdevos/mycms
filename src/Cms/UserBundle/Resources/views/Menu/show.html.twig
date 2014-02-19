@@ -1,0 +1,7 @@
+<div id="footer" style="bottom: 0px; position: absolute; width: 100%;">
+    <div class="container">
+        {% for item in menu %}
+            <a href="{{ url(item.route) }}">{{ item.label }}</a>
+        {% endfor %}
+    </div>
+</div>
