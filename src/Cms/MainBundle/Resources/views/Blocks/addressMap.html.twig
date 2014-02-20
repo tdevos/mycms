@@ -1,0 +1,38 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+
+    <div class="row">
+    {% createphp block as="rdf" noautotag %}
+    <div class="col-lg-6">
+        <h2{{ createphp_attributes(rdf.companyName) }}>{{ createphp_content(rdf.companyName) }}</h2>
+        <div class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            <span class="streetAddress" {{ createphp_attributes(rdf.streetAddress) }}>{{ createphp_content(rdf.streetAddress) }}</span><br>
+            <span class="postalCode" {{ createphp_attributes(rdf.postalCode) }}>{{ createphp_content(rdf.postalCode) }}</span>
+            <span class="addressLocality" {{ createphp_attributes(rdf.addressLocality) }}>{{ createphp_content(rdf.addressLocality) }}</span>
+        </div>
+        <div class="contact">
+            Téléphone : <span class="telephone" {{ createphp_attributes(rdf.telephone) }}>{{ createphp_content(rdf.telephone) }}</span><br>
+            Fax : <span class="faxNumber" {{ createphp_attributes(rdf.faxNumber) }}>{{ createphp_content(rdf.faxNumber) }}</span>
+            <span class="fullAddress" style="display: none">{{ createphp_content(rdf.fullAddress) }}</span>
+        </div>
+    </div>
+    {% endcreatephp %}
+    <div id="map" class="col-lg-6" style="height: 300px"></div>
+    </div>
+
+    {% javascripts '@CmsMainBundle/Resources/public/js/*' %}
+    <script src="http://maps.google.com/maps/api/js?sensor=false" style=""></script>
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script>
+        $(function(){
+            $("#map").googleAddress({
+                map: $("#map"),
+                infos: $("#infos"),
+                fullAddress: $(".fullAddress")
+            });
+        });
+    </script>
+{% endblock %}

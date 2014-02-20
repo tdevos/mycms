@@ -43,7 +43,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Cms\UserBundle\CmsUserBundle()
+            new Cms\UserBundle\CmsUserBundle(),
+            new Cms\MainBundle\CmsMainBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

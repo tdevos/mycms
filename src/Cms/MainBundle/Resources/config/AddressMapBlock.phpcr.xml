@@ -1,0 +1,26 @@
+<doctrine-mapping
+        xmlns="http://doctrine-project.org/schemas/phpcr-odm/phpcr-mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://doctrine-project.org/schemas/phpcr-odm/phpcr-mapping
+    https://github.com/doctrine/phpcr-odm/raw/master/doctrine-phpcr-odm-mapping.xsd"
+        >
+
+    <document
+            name="Cms\MainBundle\Block\AddressMapBlock"
+            referenceable="true"
+            translator="attribute"
+            >
+
+        <locale name="locale"/>
+
+        <field name="companyName" type="string" translated="true"/>
+        <field name="streetAddress" type="address" translated="true"/>
+        <field name="addressLocality" type="address" translated="true"/>
+        <field name="addressRegion" type="address" translated="true"/>
+        <field name="postalCode" type="address" translated="true"/>
+        <field name="telephone" type="address" translated="true"/>
+        <field name="faxNumber" type="address" translated="true"/>
+
+    </document>
+
+</doctrine-mapping>

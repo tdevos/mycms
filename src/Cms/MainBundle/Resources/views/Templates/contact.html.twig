@@ -1,0 +1,14 @@
+{% extends "AcmeMainBundle::layout.html.twig" %}
+
+{% block content %}
+
+    {{ sonata_block_render({ 'name': 'addressMap' }, {
+    'template': 'CmsMainBundle:Blocks:addressMap.html.twig'
+    })}}
+
+    {% createphp cmfMainContent as="rdf" %}
+    {{ rdf.title|raw }}
+    {{ rdf.body|raw }}
+    {% endcreatephp %}
+
+{% endblock %}

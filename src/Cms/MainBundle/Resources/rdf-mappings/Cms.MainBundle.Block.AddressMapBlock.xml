@@ -1,0 +1,16 @@
+<type
+        xmlns:schema="http://schema.org/"
+        typeof="schema:LocalBusiness"
+        >
+    <attribute key="class" value="col-lg-6"/>
+    <children>
+        <property property="schema:name" identifier="companyName"></property>
+        <property property="schema:streetAddress" identifier="streetAddress"></property>
+        <property property="schema:addressLocality" identifier="addressLocality"></property>
+        <property property="schema:addressRegion" identifier="addressRegion"></property>
+        <property property="schema:postalCode" identifier="postalCode"></property>
+        <property property="schema:telephone" identifier="telephone"></property>
+        <property property="schema:faxNumber" identifier="faxNumber"></property>
+        <property identifier="fullAddress"></property>
+    </children>
+</type>
