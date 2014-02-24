@@ -1,0 +1,19 @@
+{% block content %}
+    <div class="row">
+
+        {% for ch in blockChildren %}
+            {{ ch.getName() }}
+            {#<img src="{{ path("cmf_media_image_display", { path: ch.getName() }) }}">#}
+            <img src="{{ path("cmf_media_image_display", { path: "1382187_10151789410622972_657139286_n.jpg_1393234442_2125603121.jpg" }) }}">
+        {% endfor %}
+        
+        {% for image in images %}
+            <div class="col-lg-2">
+                <a href="#" class="thumbnail">
+                    <img src="{{ image.url }}" />
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
