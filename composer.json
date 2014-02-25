@@ -36,7 +36,8 @@
         "twbs/bootstrap": "3.0.*",
         "jquery/jquery":  "1.10.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "symfony/swiftmailer-bundle": "*"
+        "symfony/swiftmailer-bundle": "*",
+        "helios-ag/fm-elfinder-bundle": "1.x"
     },
     "require-dev": {
         "liip/functional-test-bundle": "1.0.*"
