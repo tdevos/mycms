@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    {% if includeAssets %}
+        {% include "FMElfinderBundle:Elfinder:helper/assets_css.html.twig" %}
+    {% endif %}
+</head>
+<body>
+{% if includeAssets %}
+    {% include "FMElfinderBundle:Elfinder:helper/assets_js.html.twig" %}
+{% endif %}
+<script type="text/javascript" charset="utf-8">
+    function getUrlParam(paramName) {
+        var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i') ;
+        var match = window.location.search.match(reParam) ;
+
+        return (match && match.length > 1) ? match[1] : '' ;
+    }
+    $().ready(function() {
+        var mode = getUrlParam('mode');
+
+        var f = $('#elfinder').elfinder({
+            url : '{{path('ef_connect')}}'+'?mode='+mode,
+            lang : '{{locale}}',
+            getFileCallback : function(file) {
+                linkImage("{{ blockName }}", file);
+            }
+        });
+
+        {% if fullscreen %}
+        $(window).resize(function(){
+            var h = $(window).height();
+
+            if($('#elfinder').height() != h - 20){
+                $('#elfinder').height(h -20).resize();
+            }
+        });
+        {% endif %}
+    });
+
+    function linkImage(blockName, file){
+        var imagePath = file.name;
+        window.opener.console.log("{{ path("linkImage") }}/block/"+blockName+"/image/"+imagePath);
+        $.ajax({
+            type: "POST",
+            url: "{{ path("linkImage") }}",
+            data: {
+                block: blockName,
+                image: imagePath
+            },
+            success: function(data){
+                if(data == "1"){
+                    var $img = window.opener.$(".new");
+                    var $img2 = $img.clone();
+                    $img.after($img2);
+                    $img.find("span").remove();
+                    $img.removeClass("new");
+                    $img.find("img").attr("src", file.url);
+                    window.close();
+                }else{
+                    alert(data);
+                }
+            }
+        });
+    }
+</script>
+<div id="elfinder"></div>
+</body>
+</html>

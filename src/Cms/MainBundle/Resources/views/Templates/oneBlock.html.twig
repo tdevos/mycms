@@ -2,10 +2,12 @@
 
 {% block content %}
     <div class="row">
-    {% createphp cmfMainContent as="rdf" %}
-    {{ rdf.title|raw }}
-    {{ rdf.body|raw }}
-    {% endcreatephp %}
+        <div class="col-lg-12">
+            {% createphp cmfMainContent as="rdf" %}
+            {{ rdf.title|raw }}
+            {{ rdf.body|raw }}
+            {% endcreatephp %}
+        </div>
     </div>
     {{ sonata_block_render({ 'name': 'firstBlock' })}}
 {% endblock %}

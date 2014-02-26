@@ -13,43 +13,78 @@ use Symfony\Cmf\Bundle\MediaBundle\CmfMediaBundle;
 use Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\Directory;
 use Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Response;
 
 class GalleryController extends Controller
 {
 
-    protected $images = array();
+    public function findAction($blockName){
+        $parameters = $this->container->getParameter('fm_elfinder');
+        $editor = $parameters['editor'];
+        $locale = $parameters['locale'] ?: $this->getRequest()->getLocale();
+        $fullscreen = $parameters['fullscreen'];
+        $includeAssets = $parameters['include_assets'];
+        $compression = $parameters['compression'];
+        $prefix = ($compression ? '/compressed' : '');
+        return $this->render('CmsMainBundle:Gallery:find.html.twig', array(
+            'locale' => $locale,
+            'fullscreen' => $fullscreen,
+            'includeAssets' => $includeAssets,
+            "blockName" => $blockName
+        ));
+    }
 
-    public function getImages()
-    {
-        return $this->images;
+    public function linkAction(){
+        $request = $this->getRequest();
+        $block = $request->request->get("block");
+        $image = $request->request->get("image");
+
+        $blockName = str_replace("_", "/", $block);
+
+        $dm = $this->get("doctrine_phpcr.odm.document_manager");
+
+        try{
+            $parentPath = PathHelper::getParentPath("/cms/media/" . $image);
+            $block = $dm->find(null, $blockName);
+
+            $imBlock = new ImagineBlock();
+            $imBlock->setParentDocument($block);
+            $imBlock->setName($image);
+            $imBlock->setLinkUrl($parentPath . "/" . $image);
+
+            $dm->persist($imBlock);
+
+            $dm->flush();
+        }catch (\Exception $e){
+            return new Response(get_class($e));
+        }
+        return new Response(1);
+    }
+
+    public function unlinkAction(){
+        $request = $this->getRequest();
+        $blockName = $request->request->get("block");
+        $imageName = $request->request->get("imageName");
+        $blockName = str_replace("_", "/", $blockName);
+
+        $dm = $this->get("doctrine_phpcr.odm.document_manager");
+
+        try{
+            $block = $dm->find(null, $blockName . "/" . $imageName);
+            $dm->remove($block);
+            $dm->flush();
+        }catch (\Exception $e){
+            return new Response($e->getMessage());
+        }
+        return new Response(1);
     }
 
     public function indexAction(ActionBlock $block){
         $dm = $this->get("doctrine_phpcr.odm.document_manager");
-
-/*        $imBlock = new ImagineBlock();
-        $imBlock->setParentDocument($block);
-        $imBlock->setName("image");
-
-        $dm->persist($imBlock);
-
-        $image = new Image();
-        $image->setFileContentFromFilesystem('/home/thomas/Desktop/1382187_10151789410622972_657139286_n.jpg');
-        $imBlock->setImage($image);
-        $dm->flush();
-*/
-        $blockChildren = $dm->getChildren($block);
-        foreach($blockChildren as $child){
-//            var_dump($child);
-        }
-        $this->images = array(
-            array("url" => "http://lorempixel.com/100/100"),
-        );
-
         return $this->render("CmsMainBundle:Gallery:index.html.twig", array(
-            "images" => $this->getImages(),
-            "blockChildren" => $blockChildren
+            "imageBlocks" => $dm->getChildren($block),
+            "blockName" => str_replace("/", "_", $block->getId())
         ));
-
     }
+
 }

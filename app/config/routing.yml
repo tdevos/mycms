@@ -58,3 +58,6 @@ elfinder:
 _imagine:
     resource: .
     type:     imagine
+
+main:
+    resource: "@CmsMainBundle/Resources/config/routing.yml"

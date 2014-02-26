@@ -1,0 +1,14 @@
+findImage:
+    pattern: /findImage/{blockName}
+    defaults:
+        _controller: CmsMainBundle:Gallery:find
+
+linkImage:
+    pattern: /linkImage
+    defaults:
+        _controller: CmsMainBundle:Gallery:link
+
+unlinkImage:
+    pattern: /unlinkImage
+    defaults:
+        _controller: CmsMainBundle:Gallery:unlink

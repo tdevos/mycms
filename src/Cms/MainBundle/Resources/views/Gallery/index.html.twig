@@ -1,19 +1,48 @@
 {% block content %}
     <div class="row">
-
-        {% for ch in blockChildren %}
-            {{ ch.getName() }}
-            {#<img src="{{ path("cmf_media_image_display", { path: ch.getName() }) }}">#}
-            <img src="{{ path("cmf_media_image_display", { path: "1382187_10151789410622972_657139286_n.jpg_1393234442_2125603121.jpg" }) }}">
-        {% endfor %}
-        
-        {% for image in images %}
-            <div class="col-lg-2">
-                <a href="#" class="thumbnail">
-                    <img src="{{ image.url }}" />
+    {% for child in imageBlocks %}
+        <div class="col-lg-2">
+            <div href="#" class="thumbnail">
+                <a href="#" class="image-remove">
+                    <span class="glyphicon glyphicon-remove"></span>
                 </a>
+                <img src="{{ path("cmf_media_image_display", { path: child.getLinkUrl() }) }}" name="{{ child.getName() }}">
             </div>
-        {% endfor %}
+        </div>
+    {% endfor %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="col-lg-2 new">
+            <a href="#" class="thumbnail">
+                <span class="glyphicon glyphicon-plus"></span>
+                <img src="">
+            </a>
+        </div>
+    {% endif %}
     </div>
+    {% if is_granted('ROLE_ADMIN') %}
+    <script>
+        $(document).ready(function(){
+            $(document).on("click", ".new a", function(){
+                window.open("{{ path('findImage', {blockName: blockName}) }}", "upload", "width=1000px, height=500px")
+                return false;
+            });
 
+            $(document).on("click", ".image-remove", function(){
+                var $this = $(this);
+                var imageName = $(this).parent().children("img").attr("name");
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path("unlinkImage") }}",
+                    data: {
+                        block: "{{ blockName }}",
+                        imageName: imageName
+                    },
+                    success: function(){
+                        $this.parents(".col-lg-2").hide("fast");
+                    }
+                });
+            });
+        });
+    </script>
+    {% endif %}
 {% endblock %}
