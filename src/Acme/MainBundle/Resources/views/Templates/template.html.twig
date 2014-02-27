@@ -1,25 +1,37 @@
 {% extends "AcmeMainBundle::layout.html.twig" %}
 
+{% block heroUnit %}
+    {% createphp cmfMainContent as="rdf" %}
+    {{ rdf.title|raw }}
+    {{ rdf.body|raw }}
+    {% endcreatephp %}
+{% endblock %}
+
 {% block content %}
 
-    <div class="jumbotron">
-        {% createphp cmfMainContent as="rdf" %}
-        {{ rdf.title|raw }}
-        {{ rdf.body|raw }}
-        {% endcreatephp %}
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="row">
+            {{ sonata_block_render({ 'name': 'firstBlock' }, {
+            'template': 'AcmeMainBundle:Blocks:block.html.twig'
+            })}}
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="row">
+            {{ sonata_block_render({ 'name': 'secondBlock' }, {
+            'template': 'AcmeMainBundle:Blocks:block.html.twig'
+            })}}
+            </div>
+        </div>
+        <div class="col-lg-4 vignette">
+            <div class="row">
+            {{ sonata_block_render({ 'name': 'thirdBlock' }, {
+            'template': 'AcmeMainBundle:Blocks:block.html.twig'
+            })}}
+            </div>
+        </div>
     </div>
-
-    {{ sonata_block_render({ 'name': 'firstBlock' }, {
-    'template': 'AcmeMainBundle:Blocks:block.html.twig'
-    })}}
-
-    {{ sonata_block_render({ 'name': 'secondBlock' }, {
-    'template': 'AcmeMainBundle:Blocks:block.html.twig'
-    })}}
-
-    {{ sonata_block_render({ 'name': 'thirdBlock' }, {
-    'template': 'AcmeMainBundle:Blocks:block.html.twig'
-    })}}
 
     {#{{ sonata_block_render({ 'name': 'additionalInfoBlock' }, {#}
     {#'divisible_by': 3,#}

@@ -18,6 +18,14 @@
 // Brand colors
 // -------------------------
 
+@edcColor:              #047D8E;
+
+@edcWebColor1:          #006699;
+@edcWebColor2:          #336666;
+@edcWebColor3:          #006666;
+@edcWebColor4:          #33CCCC;
+@edcWebColor5:          #66CCCC;
+
 @brand-primary:         #428bca;
 @brand-success:         #5cb85c;
 @brand-warning:         #f0ad4e;
@@ -27,7 +35,8 @@
 // Scaffolding
 // -------------------------
 
-@body-bg:               #fff;
+//@body-bg:               #fff;
+@body-bg:               #EEEEEE;
 @text-color:            @gray-dark;
 
 // Links
@@ -44,7 +53,7 @@
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
-@font-size-base:          14px;
+@font-size-base:          12px;
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
@@ -371,9 +380,9 @@
 // -------------------------
 
 @jumbotron-padding:              30px;
-@jumbotron-color:                inherit;
-@jumbotron-bg:                   @gray-lighter;
-@jumbotron-heading-color:        inherit;
+@jumbotron-color:                #FFFFFF;
+@jumbotron-bg:                   @edcWebColor1;
+@jumbotron-heading-color:        #FFFFFF;
 @jumbotron-font-size:            ceil(@font-size-base * 1.5);
 
 
@@ -643,4 +652,39 @@
 
 .image-remove{
   .pull-right;
+}
+
+body>.container{
+  background-color: #FFFFFF;
+}
+
+.vignette {
+  background-color: @edcWebColor1;
+  color: #FFFFFF;
+}
+
+.navbar-nav{
+  margin: 25px 0 0 25px;
+}
+
+.hero-unit{
+//  background-color: @edcWebColor1;
+  background-image: url("/herounit.jpg");
+  background-repeat:no-repeat;
+  background-size: 100%;
+  background-position: 0 -200px;
+  color: #FFFFFF;
+  height:400px;
+  margin-bottom: 10px;
+  h1, .container div div{
+    background-color: rgba(255,255,255,0.5);
+    padding: 15px;
+  }
+  h1{
+    margin-top: 80px;
+    color: @edcWebColor1;
+  }
+  .container div div{
+    color: #333333;
+  }
 }

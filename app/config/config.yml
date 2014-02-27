@@ -21,7 +21,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [CmfCreateBundle,FMElfinderBundle]
+    bundles:        [CmfCreateBundle,FMElfinderBundle,CmsMainBundle]
     #bundles:        [CmfSimpleCmsBundle, CmfCreateBundle]
     #java: /usr/bin/java
     filters:

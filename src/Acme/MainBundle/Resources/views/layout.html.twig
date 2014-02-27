@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    <title>{% block title %}{{ title|default('Simple CMS')|striptags }}{% endblock %}</title>
+    <title>{% block title %}{{ title|default('Eddy Devos Constructions')|striptags }}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <!-- Bootstrap -->
@@ -27,7 +27,9 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ url("home_redirect") }}">Brand</a>
+            <a class="navbar-brand" href="{{ url("home_redirect") }}">
+                <img src="{{ asset('logoedc.jpg') }}">
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -36,6 +38,15 @@
         </div><!-- /.navbar-collapse -->
     </div>
 </nav>
+
+{% set _heroUnit = block('heroUnit') %}
+{% if _heroUnit is not empty %}
+<div class="hero-unit">
+    <div class="container">
+    {{ _heroUnit|raw }}
+    </div>
+</div>
+{% endif %}
 
 <div class="container">
     {% block content %}

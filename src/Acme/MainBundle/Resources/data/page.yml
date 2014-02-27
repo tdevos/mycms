@@ -22,6 +22,126 @@ static:
                     title: "First title"
                     body: "first body"
 
+    entreprise:
+        name: "entreprise"
+        title: "Entreprise"
+        body: "youpi"
+        template: "AcmeMainBundle:Templates:simple.html.twig"
+    historique:
+        name: "historique"
+        title: "Historique"
+        body: "youpi"
+        parent: "entreprise"
+        template: "AcmeMainBundle:Templates:simple.html.twig"
+    activites:
+        name: "activites"
+        title: "Activités"
+        body: "youpi"
+        template: "CmsMainBundle:Templates:oneBlock.html.twig"
+        blocks:
+            firstBlock:
+                class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock
+                actionName: "CmsMainBundle:Gallery:index"
+        parent: "entreprise"
+    structure:
+        name: "structure"
+        title: "Structure"
+        body: "youpi"
+        parent: "entreprise"
+    certifications:
+        name: "certifications"
+        title: "Certifications"
+        body: "youpi"
+        parent: "entreprise"
+    realisations:
+        name: "realisations"
+        title: "Réalisations"
+        body: "youpi"
+    immeubles:
+        name: "immeubles"
+        title: "Immeubles"
+        body: "youpi"
+        template: "CmsMainBundle:Templates:oneBlock.html.twig"
+        blocks:
+            firstBlock:
+                class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock
+                actionName: "CmsMainBundle:Gallery:index"
+        parent: "realisations"
+    maisons:
+        name: "maisons"
+        title: "Maisons neuves"
+        body: "youpi"
+        template: "CmsMainBundle:Templates:oneBlock.html.twig"
+        blocks:
+            firstBlock:
+                class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock
+                actionName: "CmsMainBundle:Gallery:index"
+        parent: "realisations"
+    logements:
+        name: "logements"
+        title: "Logements sociaux"
+        body: "youpi"
+        template: "CmsMainBundle:Templates:oneBlock.html.twig"
+        blocks:
+            firstBlock:
+                class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock
+                actionName: "CmsMainBundle:Gallery:index"
+        parent: "realisations"
+    batiments:
+        name: "batiments"
+        title: "Batiments commerciaux"
+        body: "youpi"
+        template: "CmsMainBundle:Templates:oneBlock.html.twig"
+        blocks:
+            firstBlock:
+                class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock
+                actionName: "CmsMainBundle:Gallery:index"
+        parent: "realisations"
+    renovation:
+        name: "renovation"
+        title: "Rénovation"
+        body: "youpi"
+        template: "CmsMainBundle:Templates:oneBlock.html.twig"
+        blocks:
+            firstBlock:
+                class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock
+                actionName: "CmsMainBundle:Gallery:index"
+        parent: "realisations"
+    genie:
+        name: "genie"
+        title: "Génie civil"
+        body: "youpi"
+        template: "CmsMainBundle:Templates:oneBlock.html.twig"
+        blocks:
+            firstBlock:
+                class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock
+                actionName: "CmsMainBundle:Gallery:index"
+        parent: "realisations"
+    promotions:
+        name: "promotions"
+        title: "Promotions immobilières"
+        body: "youpi"
+    news:
+        name: "news"
+        title: "News"
+        body: "youpi"
+    contact:
+        name: "contact"
+        title: "Contact"
+        body: "body"
+        template: "CmsMainBundle:Templates:contact.html.twig"
+        blocks:
+            addressMap:
+                class: Cms\MainBundle\Block\AddressMapBlock
+                properties:
+                    companyName: "Eddy Devos Construction"
+                    streetAddress: "30, Quai des Vicinaux"
+                    addressLocality: "Tournai"
+                    addressRegion: "Belgium"
+                    postalCode: "7500"
+                    telephone: "062/211544"
+                    faxNumber: "047/564456"
+
 #            additionalInfoBlock:
 #                class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock
 #                children:
