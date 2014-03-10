@@ -15,6 +15,12 @@ class CmsMainBundle extends Bundle{
 
         $container->addCompilerPass($compilerPass);
 
+        $compilerPass = DoctrinePhpcrMappingsPass::createXmlMappingDriver(array(
+            realpath(__DIR__ . '/Resources/config/') => 'Cms\MainBundle\Page',
+        ));
+
+        $container->addCompilerPass($compilerPass);
+
     }
 
 }

@@ -21,7 +21,6 @@ static:
                 properties:
                     title: "First title"
                     body: "first body"
-
     entreprise:
         name: "entreprise"
         title: "Entreprise"
@@ -121,6 +120,32 @@ static:
         name: "promotions"
         title: "Promotions immobilières"
         body: "youpi"
+    prom1:
+        name: "promotion1"
+        title: "Promotion 1"
+        class: Cms\MainBundle\Page\Promotions
+        template: "CmsMainBundle:Templates:promotion.html.twig"
+        body: "Body"
+        description: "description"
+        plans: "plans"
+        architect: "a"
+        details: "a"
+        price: "a"
+        parent: "promotions"
+        blocks:
+            addressMap:
+                class: Cms\MainBundle\Block\AddressMapBlock
+                properties:
+                    companyName: "Eddy Devos Construction"
+                    streetAddress: "30, Quai des Vicinaux"
+                    addressLocality: "Tournai"
+                    addressRegion: "Belgium"
+                    postalCode: "7500"
+                    telephone: "062/211544"
+                    faxNumber: "047/564456"
+            gallery:
+                class: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock
+                actionName: "CmsMainBundle:Gallery:index"
     news:
         name: "news"
         title: "News"

@@ -1,0 +1,13 @@
+<type
+        xmlns:schema="http://schema.org/"
+        typeof="schema:LocalBusiness"
+        >
+    <children>
+        <property identifier="title" tag-name="h1"></property>
+        <property identifier="description"></property>
+        <property identifier="plans"></property>
+        <property identifier="architect"></property>
+        <property identifier="details"></property>
+        <property identifier="price"></property>
+    </children>
+</type>

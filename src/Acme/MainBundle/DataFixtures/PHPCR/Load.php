@@ -127,6 +127,12 @@ class Load extends AbstractLoadPageData
                     $this->loadBlock($dm, $page, $name, $block);
                 }
             }
+
+            foreach(get_object_vars($page) as $propertyName => $property){
+                if(is_null($property) && isset($overview[$propertyName])){
+                    $page->{"set" . ucfirst($propertyName)}($overview[$propertyName]);
+                }
+            }
         }
 
         $dm->flush();
